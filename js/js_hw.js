@@ -18,14 +18,27 @@ $(".mycss").bind('mousemove', function (evt) {
     });
 });
 
+(function($){
+
+    function sum(number){
+
+        function sum(number) {
+            sum.total += number;
+            return sum;
+        };
+        sum.total = 0;
+        return sum;
+    }
+
+    var sum = sum();
+
+    sum(1)(8)(12)(5)(332)(80);
+    alert(sum.total);
+
 
 $("table thead th").click(function () {
- /*   var rows = $("table > tbody").children('tr').detach(); // creates a JS array of DOM elements
-    $(rows).each(function (index) {
-        //  alert($(this).find("td").text());
-    });
-    alert('row ' + (parseInt($(this).parent().index()) + 1));
-    alert('col ' + (parseInt($(this).index()) + 1));*/
+
+
 });
 
 $("table  tbody  td").click(function () {
@@ -39,7 +52,7 @@ $("table  tbody  td").click(function () {
 
     for (var i = 0; i < countRow; i++) {
         for (var j = i; j < countRow; j++) {
-            if ($body[j].cells[currentCol].innerText < $body[i].cells[currentCol].innerText) {
+            if ($body[j].cells[currentCol].textContent < $body[i].cells[currentCol].textContent) {
                     $buf = $body[j].innerHTML;
                     $body[j].innerHTML = $body[i].innerHTML;
                     $body[i].innerHTML = $buf;
@@ -49,3 +62,4 @@ $("table  tbody  td").click(function () {
 
 //    alert($body[currentRow].cells[currentCol].innerText);
 });
+})(jQuery);
