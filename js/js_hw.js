@@ -19,7 +19,7 @@
         });
     });
 
-    $('button').on('click', function () {
+    $('#shake').on('click', function () {
         $(this).effect("shake", {
             times: 5,
             distance: 100
