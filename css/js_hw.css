@@ -5,6 +5,13 @@ button {
 
 }
 
+#init, #set, #destroy, #effect {
+
+    width: 100px;
+    height: 40px;
+
+}
+
 .mycss {
     position: absolute;
     top: 300px;
