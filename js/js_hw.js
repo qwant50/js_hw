@@ -58,15 +58,16 @@
         for (var i = 0; i < countRow; i++) {
             for (var j = i; j < countRow; j++) {
                 if ($body[j].cells[currentCol].textContent < $body[i].cells[currentCol].textContent) {
-                    $buf = $body[j].innerHTML;
-                    $body[j].innerHTML = $body[i].innerHTML;
-                    $body[i].innerHTML = $buf;
+                    $buf = $body[j];
+                    $body[j] = $body[i];
+                    $body[i] = $buf;
                 }
                 ;
             }
             ;
         }
         ;
+        $body.detach().appendTo($("table > tbody"));
 
 //    alert($body[currentRow].cells[currentCol].innerText);
     });
