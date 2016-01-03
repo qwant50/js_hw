@@ -8,13 +8,13 @@
 
     // актуальные настройки, глобальные
 
-    var defaults = {times: 5, distance: 100, speed: 50};
+    var defaults = {times: 5, distance: 100, speed: 50, tag: 'td'};
 
     var methods = {
         init: function ( params) {
             // А ВОТ ЭТОТ
             var options = $.extend({}, defaults, params);
-
+            console.log(options);
             // инициализируем один раз
             var init = $(this).data('myEffect');
 
@@ -22,7 +22,7 @@
                 return this;
             } else {
                 $(this).data('myEffect', true);
-                return this.bind("mouseenter.myEffect",function(){
+                return $(this).bind("mouseenter.myEffect",function(){
                     // { "shake", {times, distance, directions}, speed}
                     $(this).effect("shake", { 'times':options.times, 'distance':options.distance }, options.speed);
 
@@ -60,14 +60,15 @@
     };
 
     $('#init').on('click',function(){
-        $('td').myEffect({times: 10, distance: 20});
-        console.log(this);
+       // console.log($('#plugin').val());
+        $($('#plugin').val()).myEffect({times: 10, distance: 20, tag: $('#plugin').val()});
+        //console.log(this);
     });
     $('#destroy').on('click',function(){
-        $('td').myEffect('destroy');
+        $($('#plugin').val()).myEffect('destroy');
     });
     $('#effect').on('click',function(){
-        $('td').myEffect('effect').myEffect('effect').myEffect('effect');
+        $($('#plugin').val()).myEffect('effect').myEffect('effect').myEffect('effect');
     })
 
 
