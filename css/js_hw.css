@@ -21,7 +21,7 @@ button {
 }
 
 table {
-    margin: auto;
+    margin: 15px;
     border: 1px solid;
     border-collapse: collapse;
 }
@@ -29,4 +29,8 @@ table {
 td, th, tr {
     padding: 3px;
     border: 1px solid black;
+}
+
+.tab {
+    float: left;
 }

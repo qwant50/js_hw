@@ -48,14 +48,12 @@
 
     // Sort table function
     $("table tbody td").click(function () {
-        var $body = $(this).parent().parent().children('tr'); // creates a JS array of ref to DOM elements
         var currentCol = $(this).index();
-
         var collator = new Intl.Collator(["ru-RU"]);
-        $body.sort(function (a, b) {
+
+        var $body = $(this).parent().parent().children('tr').sort(function (a, b) {
             var j = a.cells[currentCol].textContent;
             var i = b.cells[currentCol].textContent;
-
             return collator.compare(j, i);
            // return  j.localeCompare(i);
         });
