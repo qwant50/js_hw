@@ -46,30 +46,24 @@
         $(this).myEffect();
     });
 
-    $("table  tbody  td").click(function () {
-        var $body = $("table > tbody").children('tr'); // creates a JS array of DOM elements
+    $("table tbody td").click(function () {
+        var $body = $("table > tbody tr"); // creates a JS array of DOM elements
         var currentCol = $(this).index();
-        var currentRow = $(this).parent().index();
-        var countRow = $body.length;
-        var countCol = $body[0].childElementCount;
-        console.log($body[currentRow].cells[currentCol]);
-        console.log($('table'));
+        //var currentRow = $(this).parent().index();
+        //var countRow = $body.length;
+        //var countCol = $body[0].childElementCount;
+        //console.log($body[currentRow].cells[currentCol]);
+        //console.log($('table'));
 
-        for (var i = 0; i < countRow; i++) {
-            for (var j = i; j < countRow; j++) {
-                if ($body[j].cells[currentCol].textContent < $body[i].cells[currentCol].textContent) {
-                    $buf = $body[j];
-                    $body[j] = $body[i];
-                    $body[i] = $buf;
-                }
-                ;
-            }
-            ;
-        }
-        ;
-        $body.detach().appendTo($("table > tbody"));
+        $body.sort(function (a, b) {
+            var j = a.cells[currentCol].textContent;
+            var i = b.cells[currentCol].textContent;
+            return  (i > j) ? -1 : (i < j) ? 1 : 0;
+        });
 
-//    alert($body[currentRow].cells[currentCol].innerText);
+        $body.appendTo($("table > tbody"));
+
+        //alert($body[currentRow].cells[currentCol].innerText);
     });
 
 })(jQuery);
