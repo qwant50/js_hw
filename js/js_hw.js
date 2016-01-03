@@ -46,24 +46,21 @@
         $(this).myEffect();
     });
 
+    // Sort table function
     $("table tbody td").click(function () {
-        var $body = $("table tbody tr"); // creates a JS array of DOM elements
+        var $body = $(this).parent().parent().children('tr'); // creates a JS array of ref to DOM elements
         var currentCol = $(this).index();
-        //var currentRow = $(this).parent().index();
-        //var countRow = $body.length;
-        //var countCol = $body[0].childElementCount;
-        //console.log($body[currentRow].cells[currentCol]);
-        //console.log($('table'));
 
+        var collator = new Intl.Collator(["ru-RU"]);
         $body.sort(function (a, b) {
             var j = a.cells[currentCol].textContent;
             var i = b.cells[currentCol].textContent;
-            return  (i > j) ? -1 : (i < j) ? 1 : 0;
+
+            return collator.compare(j, i);
+           // return  j.localeCompare(i);
         });
 
-        $body.appendTo($("table tbody"));
-
-        //alert($body[currentRow].cells[currentCol].innerText);
+        $body.appendTo($(this).parent().parent());
     });
 
 })(jQuery);
