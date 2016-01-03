@@ -47,7 +47,7 @@
     });
 
     $("table tbody td").click(function () {
-        var $body = $("table > tbody tr"); // creates a JS array of DOM elements
+        var $body = $("table tbody tr"); // creates a JS array of DOM elements
         var currentCol = $(this).index();
         //var currentRow = $(this).parent().index();
         //var countRow = $body.length;
@@ -61,7 +61,7 @@
             return  (i > j) ? -1 : (i < j) ? 1 : 0;
         });
 
-        $body.appendTo($("table > tbody"));
+        $body.appendTo($("table tbody"));
 
         //alert($body[currentRow].cells[currentCol].innerText);
     });
