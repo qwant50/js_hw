@@ -61,11 +61,11 @@
 
     $('#init').on('click',function(){
        // console.log($('#plugin').val());
-        $($('#plugin').val()).myEffect({times: 10, distance: 20, tag: $('#plugin').val()});
+        $($('#plugin').prop('disabled', true).val()).myEffect({times: 10, distance: 20, tag: $('#plugin').val()});
         //console.log(this);
     });
     $('#destroy').on('click',function(){
-        $($('#plugin').val()).myEffect('destroy');
+        $($('#plugin').prop('disabled', false).val()).myEffect('destroy');
     });
     $('#effect').on('click',function(){
         $($('#plugin').val()).myEffect('effect').myEffect('effect').myEffect('effect');
