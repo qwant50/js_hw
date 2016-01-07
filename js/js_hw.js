@@ -47,18 +47,29 @@
     });
 
     // Sort table function
+    //$("table tbody").on('click', 'td', function( e ) {
     $("table tbody td").click(function () {
         var currentCol = $(this).index();
         var collator = new Intl.Collator(["ru-RU"]);
-
-        var $body = $(this).parent().parent().children('tr').sort(function (a, b) {
-            var j = a.cells[currentCol].textContent;
-            var i = b.cells[currentCol].textContent;
-            return collator.compare(j, i);
-           // return  j.localeCompare(i);
-        });
-
-        $body.appendTo($(this).parent().parent());
+        var $body = $(this).parent().parent();
+        $body.children().sort(function (a, b) {
+            return collator.compare(a.cells[currentCol].textContent, b.cells[currentCol].textContent);
+            // return  j.localeCompare(i);
+        }).appendTo($body);
     });
+
+    function newWord() {
+        var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz??????????????????????????????????????????????????????????????";
+        var string_length = 8;
+        var randomstring = '';
+        for (var i = 0; i < string_length; i++) {
+            var rnum = Math.floor(Math.random() * chars.length);
+            randomstring += chars.substring(rnum, rnum + 1);
+        }
+        return randomstring;
+    }
+
+    // Table generator
+
 
 })(jQuery);
